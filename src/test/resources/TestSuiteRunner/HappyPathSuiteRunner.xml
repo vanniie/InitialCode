@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web" parallel="false" thread-count="1">
+    <parameter name="browserType" value="chrome"/>
+    <parameter name="url" value="https://yve.mlhuillier.com/"></parameter>
+
+    <listeners>
+        <listener class-name="mlhuillier.qcl.utilities.ExtentReporter" />
+    </listeners>
+
+    <test name="QCL">
+        <parameter name="portno" value="4723"></parameter>
+        <parameter name="deviceName" value="n/a"></parameter>
+        <groups>
+            <run>
+                <include name="HappyPath" />
+            </run>
+        </groups>
+        <classes>
+            <class name="mlhuillier.qcl.testScripts.QCLWebScripts">
+            </class>
+        </classes>
+    </test>
+</suite>

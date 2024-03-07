@@ -1,5 +1,6 @@
 package mlhuillier.qcl.testSteps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import mlhuillier.qcl.utilities.driverInstance.CommandBase;
@@ -17,6 +18,8 @@ public class BaseClass {
     static String oSPlatformName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getSuite().getName();
     public static LoggingUtils logger = new LoggingUtils();
     public static PropertyFileReader prop;
+    WebDriver driver = getWebDriver();
+    public static PropertyFileReader accountCredential;
     public static String os = System.getProperty("os.name").toLowerCase();
     public static String osName=System.getProperty("os.name").toLowerCase();
 
@@ -29,6 +32,10 @@ public class BaseClass {
         }
     }
 
+    public void accountCredentialReader(){
+        accountCredential = new PropertyFileReader ( ".//dto//accountCredential.properties" );
+    }
+
     //0-Param Constructor
     public BaseClass() {
 
@@ -37,6 +44,7 @@ public class BaseClass {
     //3-Param Constructor
     public BaseClass(String Application, String deviceName, String portno) throws InterruptedException {
         new CommandBase(Application, deviceName, portno);
+        accountCredentialReader();
         propertyFileReader();
     }
 

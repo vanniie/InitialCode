@@ -150,7 +150,7 @@ public class DriverInstance extends Drivertools {
 			iOScapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"XCUITest");
 
 
-			}if(application.equalsIgnoreCase("mlwallet")){
+			}if(application.equalsIgnoreCase("qcl")){
 				iOScapabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.mlhuillier.mlwallet");
 				iOScapabilities.setCapability(IOSMobileCapabilityType.COMMAND_TIMEOUTS, 300 * 60);
 				logger.info("Tapping on ML Wallet app");

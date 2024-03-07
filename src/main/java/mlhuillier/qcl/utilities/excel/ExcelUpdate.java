@@ -16,8 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ExcelUpdate {
-
 	public static String xlpath;
+
 	public static String xlFileName;
 	static String sheet = "Analysed_Reports";
 	public static String UserType = "NA";

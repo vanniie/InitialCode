@@ -7,6 +7,8 @@ import mlhuillier.qcl.utilities.driverInstance.AppiumServer;
 import mlhuillier.qcl.utilities.propertyfilereader.PropertyFileReader;
 import mlhuillier.qcl.utilities.LoggingUtils;
 import org.testng.asserts.SoftAssert;
+import mlhuillier.qcl.testSteps.QCLWeb;
+import mlhuillier.qcl.testSteps.testExecution.TestExecutionUtils;
 
 
 import static mlhuillier.qcl.utilities.Utilities.softAssert;
@@ -15,12 +17,14 @@ public class BaseTest {
 
     protected mlhuillier.qcl.testSteps.BaseClass baseClass;
 
-    protected MLWalletWeb mlWalletWeb;
+    protected QCLWeb QCLWeb;
+    protected TestExecutionUtils TestExecutionUtils;
 
     public static ExtentTest testLogger;
     AppiumServer server = new AppiumServer();
     protected static LoggingUtils logger = new LoggingUtils();
     public static PropertyFileReader prop;
+    public static PropertyFileReader accountCredential;
     public String osName = System.getProperty("os.name").toLowerCase();
 
     //To Read Properties File Based On Current OS Of Laptop
@@ -34,6 +38,16 @@ public class BaseTest {
 
     }
 
+    public void accountCredentialReader(){
+        if (osName.contains("mac") || osName.contains("linux")) {
+            System.out.println(osName);
+            accountCredential = new PropertyFileReader ( ".//dto//accountCredential.properties" );
+        } else {
+            accountCredential = new PropertyFileReader ( ".\\dto\\accountCredential.properties" );
+
+        }
+    }
+
 
 
     //Start Application
@@ -41,8 +55,10 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod(String deviceName, String portno) throws Exception {
         baseClass = new BaseClass("qcl", deviceName, portno);
-        mlWalletWeb = new MLWalletWeb();
+        TestExecutionUtils = new TestExecutionUtils();
+        QCLWeb = new QCLWeb();
         propertyFileReader();
+        accountCredentialReader();
         softAssert = new SoftAssert();
     }
 

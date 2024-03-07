@@ -243,6 +243,18 @@
       <version>1.1</version>
     </dependency>
 
+
+    <!-- https://mvnrepository.com/artifact/org.jboss.aerogear/aerogear-otp-java -->
+    <dependency>
+      <groupId>org.jboss.aerogear</groupId>
+      <artifactId>aerogear-otp-java</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+
+
+
+
     <dependency>
       <groupId>com.github.json-template</groupId>
       <artifactId>jsontemplate</artifactId>
@@ -282,8 +294,15 @@
           <!--suppress UnresolvedMavenProperty -->
           <groups>${groups}</groups>
           <suiteXmlFiles>
-            <suiteXmlFile>BaseTestSuiteRunner.xml</suiteXmlFile>
+            <suiteXmlFile>src/test/resources/TestSuiteRunner/BaseTestSuiteRunner.xml</suiteXmlFile>
+            <suiteXmlFile>src/test/resources/TestSuiteRunner/HappyPathSuiteRunner.xml</suiteXmlFile>
           </suiteXmlFiles>
+          <properties>
+            <property>
+              <name>groups</name>
+              <value>Regression,Transactional,HappyPath,Test</value>
+            </property>
+          </properties>
         </configuration>
       </plugin>
     </plugins>

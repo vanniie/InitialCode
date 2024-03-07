@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class ExcelUpdate {
 
-	static String xlpath = System.getProperty("user.dir")+"\\XLSX\\MLWallet.xlsx";
+	static String xlpath = System.getProperty("user.dir")+"\\XLSX\\QCL.xlsx";
 	static String sheet = "TC_ID";
 
 	public static void writeData(int row, int col, String data) {
