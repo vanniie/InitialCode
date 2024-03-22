@@ -9,7 +9,7 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        sh 'sh "mvn install"'
+        sh ' "mvn install"'
       }
     }
 
